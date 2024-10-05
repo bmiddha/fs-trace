@@ -1,0 +1,24 @@
+{
+  "name": "@fstrace/linux-x64-glibc",
+  "version": "0.0.1",
+  "os": [
+    "linux"
+  ],
+  "cpu": [
+    "x64"
+  ],
+  "libc": [
+    "glibc"
+  ],
+  "files": [
+    "fstrace.linux-x64-glibc",
+    "fstrace.linux-x64-glibc.node"
+  ],
+  "bin": {
+    "fstrace.linux-x64-glibc": "./fstrace.linux-x64-glibc"
+  },
+  "main": "fstrace.linux-x64-glibc.node",
+  "engines": {
+    "node": ">=18"
+  }
+}

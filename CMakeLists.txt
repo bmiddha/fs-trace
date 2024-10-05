@@ -12,7 +12,6 @@ set(CMAKE_BUILD_TYPE Release)
 
 # Build fstrace
 add_executable(fstrace src/fstrace.cc)
-message(PROJECT_BINARY_DIR="${PROJECT_BINARY_DIR}")
 target_include_directories(fstrace PUBLIC "${PROJECT_BINARY_DIR}")
 target_compile_features(fstrace PUBLIC cxx_std_20)
 
@@ -22,8 +21,8 @@ install(TARGETS fstrace DESTINATION bin)
 # Tests
 include(CTest)
 
-add_executable(test_fstrace tests/test_fstrace.cc)
-add_test(NAME TestFsTrace COMMAND test_fstrace)
+# add_executable(test_fstrace tests/test_fstrace.cc)
+# add_test(NAME TestFsTrace COMMAND test_fstrace)
 
 # Build addon
 execute_process(

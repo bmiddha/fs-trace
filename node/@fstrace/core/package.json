@@ -1,0 +1,16 @@
+{
+  "name": "@fstrace/core",
+  "version": "0.0.1",
+  "main": "index.cjs",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "files": [
+    "index.cjs",
+    "index.mjs",
+    "index.d.ts",
+    "package.json"
+  ],
+  "optionalDependencies": {
+    "@fstrace/linux-amd64-glibc": "0.0.1"
+  }
+}
