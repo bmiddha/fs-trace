@@ -13,9 +13,6 @@ using v8::Object;
 using v8::String;
 using v8::Value;
 
-// TODO fix absolute path
-// #define FSTRACE_BIN "/workspaces/fs-trace-cpp/node/@fstrace/linux-x64-glibc/fstrace.linux-x64-glibc"
-
 const char *ToCString(const String::Utf8Value &value) { return *value ? *value : "<string conversion failed>"; }
 
 void Method(const FunctionCallbackInfo<Value> &args)

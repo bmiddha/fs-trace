@@ -1,10 +1,12 @@
-/usr/bin/bash -c "/usr/bin/sleep 1; /usr/bin/touch /tmp/foo1" &
-/usr/bin/sleep 1
-/usr/bin/mkdir /tmp/bar
-/usr/bin/echo foo >> /tmp/foo
-/usr/bin/echo foo > /tmp/foo
-/usr/bin/rm -r /tmp/bar
-/usr/bin/rm /tmp/foo
-test -f /tmp/foo222 && echo foo
-readlink /etc/localtime
-/usr/bin/bash -c "/usr/bin/sleep 1; /usr/bin/touch /tmp/foo1" &
+#!/bin/bash
+CMD=$0
+if [ $1 -lt 1 ]; then
+    exit 0
+else
+    for i in {1..10}; do
+        echo "writing to /tmp/foo$i"
+        node -e "console.log('NODE START');require('child_process').execSync('touch /tmp/bar');console.log('NODE END');"
+    done
+    echo "Running $CMD with $1"
+    bash $CMD $(($1-1))
+fi

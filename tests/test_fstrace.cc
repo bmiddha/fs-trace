@@ -1,33 +1,23 @@
-#include "trace_exec.cc"
+#include "src/trace_exec.cc"
 #include "test_syscalls.cc"
-
-void run_tracee()
-{
-  ptrace(PTRACE_TRACEME, 0, 0, 0);
-  raise(SIGSTOP);
-  test_syscall_write();
-  test_syscall_read();
-  exit(0);
-}
 
 int main(int argc, char *argv[])
 {
-  pid_t child_pid = fork();
-  if (child_pid == 0)
+
+  char testShPath[1024];
+  getcwd(testShPath, sizeof(testShPath));
+  strcat(testShPath, "/../test.sh");
+  char *args[] = {"/bin/bash", testShPath, "10", NULL};
+
+  pid_t child = fork();
+  if (child == 0)
   {
-    printf("Running tracee\n");
-    run_tracee();
-  }
-  else if (child_pid > 0)
-  {
-    printf("Running tracer on %d\n", child_pid);
-    // TODO check file accesses from FD3
-    run_tracer(child_pid);
+    return trace_exec(args[0], &args[0]);
   }
   else
   {
-    perror("fork");
-    exit(1);
+    wait(NULL);
   }
+
   return 0;
 }
